@@ -1,5 +1,6 @@
 import 'package:club_house/constants/util.dart';
 import 'package:club_house/pages/welcome/phone_number_page.dart';
+import 'package:club_house/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -62,59 +63,40 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 70,
-            ),
             Center(
-              child: RaisedButton(
-                color: Color(0xff5476AA),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                elevation: 0.5,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 15,
-                  horizontal: 25,
-                ),
+              child: RoundButton(
+                color: Util.ButtonColor,
+                text: 'Get your username →',
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return PhoneNumberPage();
                   }));
                 },
-                child: Text(
-                  'Get your username →',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                ),
               ),
             ),
             SizedBox(
               height: 20,
             ),
-            Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Have an invite text?',
-                    style: TextStyle(
-                      color: Color(0xff5D7DAD),
-                    ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Have an invite text?',
+                  style: TextStyle(
+                    color: Color(0xff5D7DAD),
                   ),
-                  SizedBox(
-                    width: 5.0,
+                ),
+                SizedBox(
+                  width: 5.0,
+                ),
+                Text(
+                  'Sign in →',
+                  style: TextStyle(
+                    color: Color(0xff5D7DAD),
+                    fontWeight: FontWeight.bold,
                   ),
-                  Text(
-                    'Sign in →',
-                    style: TextStyle(
-                      color: Color(0xff5D7DAD),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
             SizedBox(
               height: 60,

@@ -1,5 +1,6 @@
 import 'package:club_house/constants/util.dart';
 import 'package:club_house/pages/welcome/username_page.dart';
+import 'package:club_house/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 
 class FullNamePage extends StatefulWidget {
@@ -168,25 +169,11 @@ class _FullNamePageState extends State<FullNamePage> {
             constraints: BoxConstraints(
               minWidth: 230,
             ),
-            child: RaisedButton(
-              onPressed: onNextButtonClick,
+            child: RoundButton(
               disabledColor: Util.ButtonColor.withOpacity(0.3),
               color: Util.ButtonColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              elevation: 0.5,
-              padding: const EdgeInsets.symmetric(
-                vertical: 15,
-                horizontal: 25,
-              ),
-              child: Text(
-                'Next →',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                ),
-              ),
+              onPressed: onNextButtonClick,
+              text: 'Next →',
             ),
           ),
           SizedBox(

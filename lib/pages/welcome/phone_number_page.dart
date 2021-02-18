@@ -1,5 +1,6 @@
 import 'package:club_house/constants/util.dart';
 import 'package:club_house/pages/welcome/invitation_page.dart';
+import 'package:club_house/widgets/round_button.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -124,25 +125,11 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
               constraints: BoxConstraints(
                 minWidth: 230,
               ),
-              child: RaisedButton(
+              child: RoundButton(
+                onPressed: onSignUpButtonClick,
                 disabledColor: Util.ButtonColor.withOpacity(0.3),
                 color: Util.ButtonColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                elevation: 0.5,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 15,
-                  horizontal: 25,
-                ),
-                onPressed: onSignUpButtonClick,
-                child: Text(
-                  'Next →',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                ),
+                text:  'Next →',
               ),
             ),
             SizedBox(
