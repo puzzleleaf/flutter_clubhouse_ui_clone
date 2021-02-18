@@ -4,10 +4,11 @@ class Util {
   static const BackgroundColor = Color(0xfff1efe5);
   static const ButtonColor = Color(0xff5476AA);
   static const DarkBrown = Color(0xff918E81);
+  static const DarkSand = Color(0xffd5ceb9);
 
   static const LightSand = Color(0xfff1efe5);
   static const AccentSand = Color(0xffE6E2D6);
-  static const DarkSand = Color(0xffd5ceb9);
+
   // static const DarkBrown = Color(0xff6E6850);
   static const AccentBlue = Color(0xff5B75A6);
   static const AccentGreen = Color(0xff55AB67);

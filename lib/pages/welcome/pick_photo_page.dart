@@ -1,4 +1,5 @@
 import 'package:club_house/constants/util.dart';
+import 'package:club_house/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 class PickPhotoPage extends StatelessWidget {
@@ -62,6 +63,12 @@ class PickPhotoPage extends StatelessWidget {
               ),
               child: RaisedButton(
                 onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(),
+                    ),
+                  );
                 },
                 disabledColor: Util.ButtonColor.withOpacity(0.3),
                 color: Util.ButtonColor,
