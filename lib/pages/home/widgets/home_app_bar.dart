@@ -1,4 +1,4 @@
-import 'package:club_house/pages/home/widgets/round_image.dart';
+import 'file:///D:/development/club_house/lib/widgets/round_image.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget {

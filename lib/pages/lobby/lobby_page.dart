@@ -1,7 +1,11 @@
 import 'package:club_house/constants/util.dart';
-import 'package:club_house/pages/home/widgets/room_item.dart';
-import 'package:club_house/pages/home/widgets/schedule_item.dart';
+import 'package:club_house/pages/lobby/widgets/room_bottom_sheet.dart';
+import 'package:club_house/pages/lobby/widgets/schedule_item.dart';
+import 'package:club_house/widgets/round_button.dart';
+import 'package:club_house/widgets/round_image.dart';
 import 'package:flutter/material.dart';
+
+import 'widgets/room_item.dart';
 
 class LobbyPage extends StatelessWidget {
   @override
@@ -24,25 +28,24 @@ class LobbyPage extends StatelessWidget {
         Container(
           alignment: Alignment.bottomCenter,
           margin: const EdgeInsets.only(bottom: 20),
-          child: RaisedButton(
-            onPressed: () {},
+          child: RoundButton(
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                  ),
+                ),
+                builder: (context) {
+                  return RoomBottomSheet();
+                },
+              );
+            },
             disabledColor: Util.ButtonColor.withOpacity(0.3),
             color: Util.AccentGreen,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-            ),
-            elevation: 0.5,
-            padding: const EdgeInsets.symmetric(
-              vertical: 15,
-              horizontal: 25,
-            ),
-            child: Text(
-              '+ Start a room',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-              ),
-            ),
+            text: '+ Start a room',
           ),
         ),
       ],
