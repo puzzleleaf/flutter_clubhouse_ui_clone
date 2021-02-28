@@ -1,10 +1,11 @@
-import 'file:///D:/development/club_house/lib/widgets/round_image.dart';
+import 'package:club_house/widgets/round_image.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget {
   final profile;
+  final Function onProfileTab;
 
-  const HomeAppBar({Key key, this.profile}) : super(key: key);
+  const HomeAppBar({Key key, this.profile, this.onProfileTab}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +66,11 @@ class HomeAppBar extends StatelessWidget {
                 width: 10,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: onProfileTab,
                 child: RoundImage(
-                  url:
-                      'https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80',
+                  path: profile['image'],
+                  width: 40,
+                  height: 40,
                 ),
               ),
             ],

@@ -1,192 +1,139 @@
-import 'package:club_house/constants/util.dart';
+import 'package:club_house/constants/style.dart';
 import 'package:club_house/widgets/round_button.dart';
 import 'package:club_house/widgets/round_image.dart';
 import 'package:flutter/material.dart';
 
-class RoomBottomSheet extends StatelessWidget {
+class RoomBottomSheet extends StatefulWidget {
+  @override
+  _RoomBottomSheetState createState() => _RoomBottomSheetState();
+}
+
+class _RoomBottomSheetState extends State<RoomBottomSheet> {
+  var selectedButtonIndex = 0;
+  var data = [
+    {
+      'image':
+      'https://images.unsplash.com/photo-1518288774672-b94e808873ff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=678&q=80',
+      'text': 'Open',
+      'selectedMessage': 'Start a room open to everyone',
+    },
+    {
+      'image':
+      'https://images.unsplash.com/photo-1518288774672-b94e808873ff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=678&q=80',
+      'text': 'Social',
+      'selectedMessage': 'Start a room with people I follow',
+    },
+    {
+      'image':
+      'https://images.unsplash.com/photo-1518288774672-b94e808873ff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=678&q=80',
+      'text': 'Closed',
+      'selectedMessage': 'Start a room for people I choose',
+    },
+  ];
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 300,
-        padding: const EdgeInsets.only(
-          top: 10,
-          right: 20,
-          left: 20,
-          bottom: 20,
-        ),
-        child: Column(
-          children: [
-            Container(
-              width: 40,
-              height: 5,
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.circular(30),
+      padding: const EdgeInsets.only(
+        top: 10,
+        right: 20,
+        left: 20,
+        bottom: 20,
+      ),
+      child: Column(
+        children: [
+          Container(
+            width: 40,
+            height: 5,
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.circular(30),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(
+              vertical: 10,
+            ),
+            alignment: Alignment.centerRight,
+            child: Text(
+              '+ Add a Topic',
+              style: TextStyle(
+                color: Style.AccentGreen,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                vertical: 10,
-              ),
-              alignment: Alignment.centerRight,
-              child: Text(
-                '+ Add a Topic',
-                style: TextStyle(
-                  color: Util.AccentGreen,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              for (var i = 0; i < 3; i++)
                 InkWell(
                   borderRadius: BorderRadius.circular(15),
                   onTap: () {
-                    //set the toggle logic
-                    // setState(() {
-                    //   for (int indexBtn = 0;
-                    //       indexBtn < isSelected.length;
-                    //       indexBtn++) {
-                    //     if (indexBtn == index) {
-                    //       isSelected[indexBtn] = true;
-                    //     } else {
-                    //       isSelected[indexBtn] = false;
-                    //     }
-                    //   }
-                    // });
+                    setState(() {
+                      selectedButtonIndex = i;
+                    });
                   },
                   child: Ink(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                     decoration: BoxDecoration(
-                      color: false ? Color(0xffD6EAF8) : Colors.transparent,
-                      borderRadius: BorderRadius.circular(8),
+                      color: i == selectedButtonIndex
+                          ? Style.SelectedItemBorderGrey
+                          : Colors.transparent,
+                      borderRadius: BorderRadius.circular(15),
                       border: Border.all(
-                          color: false ? Colors.grey : Colors.transparent),
+                          color: i == selectedButtonIndex
+                              ? Style.SelectedItemGrey
+                              : Colors.transparent),
                     ),
                     child: Column(
                       children: [
                         Container(
+                          padding: const EdgeInsets.only(bottom: 5),
                           child: RoundImage(
                             width: 80,
                             height: 80,
                             borderRadius: 20,
-                            url:
-                                "https://images.unsplash.com/photo-1518288774672-b94e808873ff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=678&q=80",
+                            url: data[i]['image'],
                           ),
                         ),
-                        Text('Open'),
+                        Text(
+                          data[i]['text'],
+                        ),
                       ],
                     ),
                   ),
                 ),
-                InkWell(
-                  borderRadius: BorderRadius.circular(15),
-                  onTap: () {
-                    //set the toggle logic
-                    // setState(() {
-                    //   for (int indexBtn = 0;
-                    //       indexBtn < isSelected.length;
-                    //       indexBtn++) {
-                    //     if (indexBtn == index) {
-                    //       isSelected[indexBtn] = true;
-                    //     } else {
-                    //       isSelected[indexBtn] = false;
-                    //     }
-                    //   }
-                    // });
-                  },
-                  child: Ink(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: false ? Color(0xffD6EAF8) : Colors.transparent,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                          color: false ? Colors.grey : Colors.transparent),
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          child: RoundImage(
-                            width: 80,
-                            height: 80,
-                            borderRadius: 20,
-                            url:
-                                "https://images.unsplash.com/photo-1518288774672-b94e808873ff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=678&q=80",
-                          ),
-                        ),
-                        Text('Open'),
-                      ],
-                    ),
-                  ),
-                ),
-                InkWell(
-                  borderRadius: BorderRadius.circular(15),
-                  onTap: () {
-                    //set the toggle logic
-                    // setState(() {
-                    //   for (int indexBtn = 0;
-                    //       indexBtn < isSelected.length;
-                    //       indexBtn++) {
-                    //     if (indexBtn == index) {
-                    //       isSelected[indexBtn] = true;
-                    //     } else {
-                    //       isSelected[indexBtn] = false;
-                    //     }
-                    //   }
-                    // });
-                  },
-                  child: Ink(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: true ? Color(0xffD6EAF8) : Colors.transparent,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                          color: true ? Colors.grey : Colors.transparent),
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          child: RoundImage(
-                            width: 80,
-                            height: 80,
-                            borderRadius: 20,
-                            url:
-                                "https://images.unsplash.com/photo-1518288774672-b94e808873ff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=678&q=80",
-                          ),
-                        ),
-                        Text('Open'),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            ],
+          ),
+          Divider(
+            indent: 20,
+            endIndent: 20,
+            thickness: 1,
+            height: 60,
+          ),
+          Text(
+            data[selectedButtonIndex]['selectedMessage'],
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
             ),
-            Expanded(
-              child: Divider(
-                indent: 60,
-                endIndent: 60,
-                thickness: 1,
-                height: 20,
-              ),
-            ),
-            Expanded(
-              child: Text(
-                'Start a room open to everyone',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            RoundButton(
-              color: Util.AccentGreen,
-              onPressed: () {},
-              text: 'Let\'s go',
-            ),
-          ],
-        ));
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          RoundButton(
+            color: Style.AccentGreen,
+            onPressed: () {},
+            text: '🎉 Let\'s go',
+          ),
+        ],
+      ),
+    );
   }
 }

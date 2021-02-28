@@ -1,4 +1,4 @@
-import 'package:club_house/constants/util.dart';
+import 'package:club_house/constants/style.dart';
 import 'package:flutter/material.dart';
 
 class ScheduleItem extends StatelessWidget {
@@ -23,7 +23,7 @@ class ScheduleItem extends StatelessWidget {
                 child: Text(
                   time,
                   style: TextStyle(
-                    color: Util.DarkBrown,
+                    color: Style.DarkBrown,
                   ),
                 ),
               ),
@@ -48,12 +48,11 @@ class ScheduleItem extends StatelessWidget {
                         ),
                         Icon(
                           Icons.home,
-                          color: Util.AccentGreen,
+                          color: Style.AccentGreen,
                           size: 15,
                         ),
                       ],
                     ),
-
                     Text(
                       text,
                       overflow: TextOverflow.ellipsis,
