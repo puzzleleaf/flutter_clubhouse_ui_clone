@@ -1,7 +1,7 @@
-import 'package:club_house/constants/style.dart';
-import 'package:club_house/pages/welcome/full_name_page.dart';
 import 'package:club_house/widgets/round_button.dart';
 import 'package:club_house/widgets/round_image.dart';
+import 'package:club_house/util/style.dart';
+import 'package:club_house/pages/welcome/full_name_page.dart';
 import 'package:flutter/material.dart';
 
 class InvitationPage extends StatelessWidget {

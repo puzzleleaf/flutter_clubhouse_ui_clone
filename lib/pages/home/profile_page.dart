@@ -1,4 +1,4 @@
-import 'package:club_house/constants/style.dart';
+import 'package:club_house/util/style.dart';
 import 'package:club_house/widgets/round_image.dart';
 import 'package:flutter/material.dart';
 

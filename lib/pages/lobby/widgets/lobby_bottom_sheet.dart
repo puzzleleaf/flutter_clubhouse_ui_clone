@@ -1,36 +1,16 @@
-import 'package:club_house/constants/style.dart';
+import 'package:club_house/util/data.dart';
 import 'package:club_house/widgets/round_button.dart';
+import 'package:club_house/util/style.dart';
 import 'package:club_house/widgets/round_image.dart';
 import 'package:flutter/material.dart';
 
-class RoomBottomSheet extends StatefulWidget {
+class LobbyBottomSheet extends StatefulWidget {
   @override
-  _RoomBottomSheetState createState() => _RoomBottomSheetState();
+  _LobbyBottomSheetState createState() => _LobbyBottomSheetState();
 }
 
-class _RoomBottomSheetState extends State<RoomBottomSheet> {
+class _LobbyBottomSheetState extends State<LobbyBottomSheet> {
   var selectedButtonIndex = 0;
-  var data = [
-    {
-      'image':
-      'https://images.unsplash.com/photo-1518288774672-b94e808873ff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=678&q=80',
-      'text': 'Open',
-      'selectedMessage': 'Start a room open to everyone',
-    },
-    {
-      'image':
-      'https://images.unsplash.com/photo-1518288774672-b94e808873ff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=678&q=80',
-      'text': 'Social',
-      'selectedMessage': 'Start a room with people I follow',
-    },
-    {
-      'image':
-      'https://images.unsplash.com/photo-1518288774672-b94e808873ff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=678&q=80',
-      'text': 'Closed',
-      'selectedMessage': 'Start a room for people I choose',
-    },
-  ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -99,11 +79,11 @@ class _RoomBottomSheetState extends State<RoomBottomSheet> {
                             width: 80,
                             height: 80,
                             borderRadius: 20,
-                            url: data[i]['image'],
+                            url: lobbyBottomSheets[i]['image'],
                           ),
                         ),
                         Text(
-                          data[i]['text'],
+                          lobbyBottomSheets[i]['text'],
                         ),
                       ],
                     ),
@@ -118,7 +98,7 @@ class _RoomBottomSheetState extends State<RoomBottomSheet> {
             height: 60,
           ),
           Text(
-            data[selectedButtonIndex]['selectedMessage'],
+            lobbyBottomSheets[selectedButtonIndex]['selectedMessage'],
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,

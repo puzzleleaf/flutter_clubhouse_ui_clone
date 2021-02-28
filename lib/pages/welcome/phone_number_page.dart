@@ -1,7 +1,7 @@
-import 'package:country_code_picker/country_code_picker.dart';
-import 'package:club_house/constants/style.dart';
-import 'package:club_house/pages/welcome/invitation_page.dart';
 import 'package:club_house/widgets/round_button.dart';
+import 'package:country_code_picker/country_code_picker.dart';
+import 'package:club_house/util/style.dart';
+import 'package:club_house/pages/welcome/invitation_page.dart';
 import 'package:flutter/material.dart';
 
 class PhoneNumberPage extends StatefulWidget {
