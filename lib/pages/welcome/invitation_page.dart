@@ -1,3 +1,4 @@
+import 'package:club_house/util/history.dart';
 import 'package:club_house/widgets/round_button.dart';
 import 'package:club_house/widgets/round_image.dart';
 import 'package:club_house/util/style.dart';
@@ -8,7 +9,6 @@ class InvitationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Style.BackgroundColor,
       appBar: AppBar(),
       body: Container(
         alignment: Alignment.center,
@@ -52,7 +52,7 @@ class InvitationPage extends StatelessWidget {
               height: 10,
             ),
             Text(
-              'Puzzleleaf Youtube',
+              'Puzzleleaf',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -81,8 +81,8 @@ class InvitationPage extends StatelessWidget {
             minWidth: 230,
           ),
           child: RoundButton(
-            disabledColor: Style.ButtonColor.withOpacity(0.3),
-            color: Style.ButtonColor,
+            disabledColor: Style.AccentBlue.withOpacity(0.3),
+            color: Style.AccentBlue,
             text: '🐋 Import from Whale',
             onPressed: () {},
           ),
@@ -92,9 +92,7 @@ class InvitationPage extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return FullNamePage();
-            }));
+            History.pushPage(context, FullNamePage());
           },
           child: Text(
             'Enter my info manually',

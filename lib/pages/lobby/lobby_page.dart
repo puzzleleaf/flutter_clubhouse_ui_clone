@@ -1,61 +1,134 @@
+import 'package:club_house/util/history.dart';
+import 'package:flutter/material.dart';
+import 'package:club_house/pages/lobby/widgets/room_card.dart';
+import 'package:club_house/pages/lobby/widgets/schedule_card.dart';
 import 'package:club_house/models/room.dart';
-import 'package:club_house/models/user.dart';
-import 'package:club_house/pages/lobby/widgets/room_item.dart';
 import 'package:club_house/util/data.dart';
 import 'package:club_house/widgets/round_button.dart';
 import 'package:club_house/util/style.dart';
 import 'package:club_house/pages/lobby/widgets/lobby_bottom_sheet.dart';
-import 'package:club_house/pages/lobby/widgets/schedule_item.dart';
-import 'package:flutter/material.dart';
+import 'package:club_house/pages/room/room_page.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class MainPage extends StatelessWidget {
+class LobbyPage extends StatefulWidget {
+  @override
+  _LobbyPageState createState() => _LobbyPageState();
+}
+
+class _LobbyPageState extends State<LobbyPage> {
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
+
+  void _onRefresh() async {
+    await Future.delayed(Duration(milliseconds: 1000));
+    _refreshController.refreshCompleted();
+  }
+
+  void _onLoading() async {
+    await Future.delayed(Duration(milliseconds: 1000));
+    _refreshController.loadComplete();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.bottomCenter,
       children: [
-        SingleChildScrollView(
-          padding: const EdgeInsets.only(
-            bottom: 80,
-            left: 20,
-            right: 20,
-          ),
-          child: Column(
-            children: [
-              buildScheduleCard(),
-              for (var i = 0, len = rooms.length; i < len; i++)
-                buildRoomCard(Room.fromJson({
-                  ...rooms[i],
-                  'users': List.generate(
-                    rooms[i]['users'].length,
-                    (index) => User.fromJson(
-                      rooms[i]['users'][index],
-                    ),
-                  ),
-                })),
-            ],
+        SmartRefresher(
+          enablePullDown: true,
+          controller: _refreshController,
+          onRefresh: _onRefresh,
+          onLoading: _onLoading,
+          child: ListView.builder(
+            padding: const EdgeInsets.only(
+              bottom: 80,
+              left: 20,
+              right: 20,
+            ),
+            itemBuilder: (context, index) {
+              if (index == 0) {
+                return buildScheduleCard();
+              }
+              return buildRoomCard(rooms[index - 1]);
+            },
+            itemCount: rooms.length + 1,
           ),
         ),
-        buildStartRoomButton(context),
+        buildGradientContainer(),
+        buildStartRoomButton(),
       ],
     );
   }
 
-  Widget buildStartRoomButton(BuildContext context) {
+  Widget buildGradientContainer() {
     return Container(
-      alignment: Alignment.bottomCenter,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Style.LightBrown.withOpacity(0.2),
+            Style.LightBrown,
+          ],
+        ),
+      ),
+      height: 50,
+    );
+  }
+
+  Widget buildStartRoomButton() {
+    return Container(
       margin: const EdgeInsets.only(bottom: 20),
       child: RoundButton(
         onPressed: () {
-          showBottomSheet(context);
+          showBottomSheet();
         },
-        disabledColor: Style.ButtonColor.withOpacity(0.3),
         color: Style.AccentGreen,
         text: '+ Start a room',
       ),
     );
   }
 
-  showBottomSheet(BuildContext context) {
+  Widget buildRoomCard(Room room) {
+    return GestureDetector(
+      onTap: () {
+        enterRoom(room);
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(
+          vertical: 10,
+        ),
+        child: RoomCard(
+          room: room,
+        ),
+      ),
+    );
+  }
+
+  Widget buildScheduleCard() {
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        vertical: 10,
+      ),
+      child: ScheduleCard(),
+    );
+  }
+
+  enterRoom(Room room) {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (context) {
+        return Container(
+          child: RoomPage(
+            room: room,
+          ),
+        );
+      },
+    );
+  }
+
+  showBottomSheet() {
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
@@ -68,46 +141,20 @@ class MainPage extends StatelessWidget {
       builder: (context) {
         return Wrap(
           children: [
-            LobbyBottomSheet(),
+            LobbyBottomSheet(
+              onButtonTap: () {
+                History.pushPage(context, RoomPage(
+                  room: Room(
+                    title: '${myProfile.name}\'s Room',
+                    users: [myProfile],
+                    speakerCount: 1,
+                  ),
+                ));
+              },
+            ),
           ],
         );
       },
-    );
-  }
-
-  Widget buildRoomCard(Room room) {
-    return Container(
-      margin: const EdgeInsets.symmetric(
-        vertical: 10,
-      ),
-      child: RoomItem(
-        room: room,
-      ),
-    );
-  }
-
-  Widget buildScheduleCard() {
-    return Container(
-      margin: const EdgeInsets.symmetric(
-        vertical: 10,
-      ),
-      padding: const EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 10,
-      ),
-      decoration: BoxDecoration(
-        color: Style.AccentSand,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        children: [
-          for (var i = 0, len = schedules.length; i < len; i++)
-            ScheduleItem(
-              time: schedules[i]['time'],
-              text: schedules[i]['text'],
-            ),
-        ],
-      ),
     );
   }
 }

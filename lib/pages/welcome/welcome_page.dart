@@ -1,3 +1,4 @@
+import 'package:club_house/util/history.dart';
 import 'package:club_house/widgets/round_button.dart';
 import 'package:club_house/util/style.dart';
 import 'package:club_house/pages/welcome/phone_number_page.dart';
@@ -7,7 +8,6 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Style.BackgroundColor,
       appBar: AppBar(),
       body: Container(
         alignment: Alignment.center,
@@ -87,11 +87,12 @@ class WelcomePage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         RoundButton(
-          color: Style.ButtonColor,
+          color: Style.AccentBlue,
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return PhoneNumberPage();
-            }));
+            History.pushPage(
+              context,
+              PhoneNumberPage(),
+            );
           },
           child: Container(
             child: Row(

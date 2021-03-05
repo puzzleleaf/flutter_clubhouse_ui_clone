@@ -1,3 +1,4 @@
+import 'package:club_house/util/history.dart';
 import 'package:club_house/widgets/round_button.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:club_house/util/style.dart';
@@ -17,7 +18,6 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Style.BackgroundColor,
       appBar: AppBar(),
       body: Container(
         alignment: Alignment.center,
@@ -131,8 +131,9 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
         ),
         RoundButton(
           onPressed: onSignUpButtonClick,
-          disabledColor: Style.ButtonColor.withOpacity(0.3),
-          color: Style.ButtonColor,
+          disabledColor: Style.AccentBlue.withOpacity(0.3),
+          color: Style.AccentBlue,
+          minimumWidth: 230,
           child: Container(
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -157,12 +158,6 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
   }
 
   signUp() {
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(
-        builder: (context) => InvitationPage(),
-      ),
-      (Route<dynamic> route) => false,
-    );
+    History.pushPageUntil(context, InvitationPage());
   }
 }

@@ -1,3 +1,4 @@
+import 'package:club_house/util/history.dart';
 import 'package:club_house/widgets/round_button.dart';
 import 'package:club_house/util/style.dart';
 import 'package:club_house/pages/welcome/pick_photo_page.dart';
@@ -16,7 +17,6 @@ class _UsernamePageState extends State<UsernamePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Style.BackgroundColor,
       appBar: AppBar(),
       body: Container(
         alignment: Alignment.center,
@@ -103,43 +103,33 @@ class _UsernamePageState extends State<UsernamePage> {
   }
 
   Widget buildBottom() {
-    return Container(
-      constraints: BoxConstraints(
-        minWidth: 230,
-      ),
-      child: RoundButton(
-        disabledColor: Style.ButtonColor.withOpacity(0.3),
-        color: Style.ButtonColor,
-        onPressed: onNextButtonClick,
-        child: Container(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Next',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
-              ),
-              Icon(
-                Icons.arrow_right_alt,
+    return RoundButton(
+      disabledColor: Style.AccentBlue.withOpacity(0.3),
+      color: Style.AccentBlue,
+      onPressed: onNextButtonClick,
+      minimumWidth: 230,
+      child: Container(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Next',
+              style: TextStyle(
                 color: Colors.white,
+                fontSize: 20,
               ),
-            ],
-          ),
+            ),
+            Icon(
+              Icons.arrow_right_alt,
+              color: Colors.white,
+            ),
+          ],
         ),
       ),
     );
   }
 
   next() {
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(
-        builder: (context) => PickPhotoPage(),
-      ),
-          (Route<dynamic> route) => false,
-    );
+    History.pushPageUntil(context, PickPhotoPage());
   }
 }

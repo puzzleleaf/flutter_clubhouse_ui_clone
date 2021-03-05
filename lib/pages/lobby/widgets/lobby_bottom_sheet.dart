@@ -5,6 +5,10 @@ import 'package:club_house/widgets/round_image.dart';
 import 'package:flutter/material.dart';
 
 class LobbyBottomSheet extends StatefulWidget {
+  final Function onButtonTap;
+
+  const LobbyBottomSheet({Key key, this.onButtonTap}) : super(key: key);
+
   @override
   _LobbyBottomSheetState createState() => _LobbyBottomSheetState();
 }
@@ -79,11 +83,14 @@ class _LobbyBottomSheetState extends State<LobbyBottomSheet> {
                             width: 80,
                             height: 80,
                             borderRadius: 20,
-                            url: lobbyBottomSheets[i]['image'],
+                            path: lobbyBottomSheets[i]['image'],
                           ),
                         ),
                         Text(
                           lobbyBottomSheets[i]['text'],
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
@@ -109,7 +116,7 @@ class _LobbyBottomSheetState extends State<LobbyBottomSheet> {
           ),
           RoundButton(
             color: Style.AccentGreen,
-            onPressed: () {},
+            onPressed: widget.onButtonTap,
             text: '🎉 Let\'s go',
           ),
         ],

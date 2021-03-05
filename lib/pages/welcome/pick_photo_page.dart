@@ -1,3 +1,4 @@
+import 'package:club_house/util/history.dart';
 import 'package:club_house/widgets/round_button.dart';
 import 'package:club_house/util/style.dart';
 import 'package:club_house/pages/home/home_page.dart';
@@ -7,10 +8,9 @@ class PickPhotoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Style.BackgroundColor,
       appBar: AppBar(
         actions: [
-          buildActionButton(),
+          buildActionButton(context),
         ],
       ),
       body: Container(
@@ -29,25 +29,30 @@ class PickPhotoPage extends StatelessWidget {
             Spacer(
               flex: 3,
             ),
-            buildBottom(context),
+            buildBottom(),
           ],
         ),
       ),
     );
   }
 
-  Widget buildActionButton() {
+  Widget buildActionButton(BuildContext context) {
     return Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
       ),
-      child: Text(
-        'Skip',
-        textAlign: TextAlign.end,
-        style: TextStyle(
-          color: Style.DarkBrown,
-          fontWeight: FontWeight.bold,
+      child: GestureDetector(
+        onTap: () {
+          History.pushPageReplacement(context, HomePage());
+        },
+        child: Text(
+          'Skip',
+          textAlign: TextAlign.end,
+          style: TextStyle(
+            color: Style.DarkBrown,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
@@ -74,23 +79,17 @@ class PickPhotoPage extends StatelessWidget {
       child: Icon(
         Icons.add_photo_alternate_outlined,
         size: 100,
-        color: Style.ButtonColor,
+        color: Style.AccentBlue,
       ),
     );
   }
 
-  Widget buildBottom(BuildContext context) {
+  Widget buildBottom() {
     return RoundButton(
-      onPressed: () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => HomePage(),
-          ),
-        );
-      },
-      disabledColor: Style.ButtonColor.withOpacity(0.3),
-      color: Style.ButtonColor,
+      onPressed: () {},
+      disabledColor: Style.AccentBlue.withOpacity(0.3),
+      color: Style.AccentBlue,
+      minimumWidth: 230,
       child: Container(
         child: Row(
           mainAxisSize: MainAxisSize.min,

@@ -3,13 +3,11 @@ import 'package:club_house/models/user.dart';
 class Room {
   final String title;
   final List<User> users;
-  final int userCount;
-  final int chatCount;
+  final int speakerCount;
 
   Room({
     this.title,
-    this.userCount,
-    this.chatCount,
+    this.speakerCount,
     this.users,
   });
 
@@ -17,8 +15,7 @@ class Room {
     return Room(
       title: json['title'],
       users: json['users'],
-      userCount: json['userCount'],
-      chatCount: json['chatCount'],
+      speakerCount: json['speakerCount'],
     );
   }
 }
