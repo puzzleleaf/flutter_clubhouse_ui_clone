@@ -119,10 +119,8 @@ class _LobbyPageState extends State<LobbyPage> {
       isScrollControlled: true,
       context: context,
       builder: (context) {
-        return Container(
-          child: RoomPage(
-            room: room,
-          ),
+        return RoomPage(
+          room: room,
         );
       },
     );
@@ -143,13 +141,15 @@ class _LobbyPageState extends State<LobbyPage> {
           children: [
             LobbyBottomSheet(
               onButtonTap: () {
-                History.pushPage(context, RoomPage(
-                  room: Room(
+                Navigator.pop(context);
+
+                enterRoom(
+                  Room(
                     title: '${myProfile.name}\'s Room',
                     users: [myProfile],
                     speakerCount: 1,
                   ),
-                ));
+                );
               },
             ),
           ],

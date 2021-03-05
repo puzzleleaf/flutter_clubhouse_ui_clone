@@ -18,7 +18,7 @@ class RoomPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Style.LightBrown,
       appBar: AppBar(
-        toolbarHeight: 100,
+        toolbarHeight: 150,
         automaticallyImplyLeading: false,
         title: Row(
           children: [
@@ -54,42 +54,40 @@ class RoomPage extends StatelessWidget {
           ],
         ),
       ),
-      body: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.only(
-            left: 20,
-            right: 20,
-            bottom: 20,
+      body: Container(
+        padding: const EdgeInsets.only(
+          left: 20,
+          right: 20,
+          bottom: 20,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(30),
+            topLeft: Radius.circular(30),
           ),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(30),
-              topLeft: Radius.circular(30),
+        ),
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              padding: const EdgeInsets.only(bottom: 80, top: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  buildTitle(room.title),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  buildSpeakers(context, room.users.sublist(0, room.speakerCount)),
+                  buildOthers(context, room.users.sublist(room.speakerCount)),
+                ],
+              ),
             ),
-          ),
-          child: Stack(
-            children: [
-              SingleChildScrollView(
-                padding: const EdgeInsets.only(bottom: 80, top: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    buildTitle(room.title),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    buildSpeakers(context, room.users.sublist(0, room.speakerCount)),
-                    buildOthers(context, room.users.sublist(room.speakerCount)),
-                  ],
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: buildBottom(context),
-              ),
-            ],
-          ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: buildBottom(context),
+            ),
+          ],
         ),
       ),
     );

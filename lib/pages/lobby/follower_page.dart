@@ -67,15 +67,18 @@ class FollowerPage extends StatelessWidget {
               );
             },
             onRoomButtonTap: () {
-              History.pushPage(
-                context,
-                RoomPage(
-                  room: Room(
-                    title: '${myProfile.name}\'s Room',
-                    users: [myProfile, users[index]],
-                    speakerCount: 1,
-                  ),
-                ),
+              showModalBottomSheet(
+                isScrollControlled: true,
+                context: context,
+                builder: (context) {
+                  return RoomPage(
+                    room: Room(
+                      title: '${myProfile.name}\'s Room',
+                      users: [myProfile, users[index]],
+                      speakerCount: 1,
+                    ),
+                  );
+                },
               );
             },
           ),
