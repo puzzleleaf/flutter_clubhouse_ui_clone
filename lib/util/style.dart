@@ -10,6 +10,8 @@ class Style {
   static const AccentBrown = Color(0xffE6E2D6);
   static const AccentBlue = Color(0xff5B75A6);
 
+
+  static const AccentGrey = Color(0xff807970);
   static const DarkBrown = Color(0xff918E81);
 
   static const SelectedItemGrey = Color(0xffC5C5CF);
