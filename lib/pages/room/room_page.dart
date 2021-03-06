@@ -183,7 +183,7 @@ class RoomPage extends StatelessWidget {
             },
             color: Style.LightGrey,
             child: Text(
-              '✌🏼 Leave quietly',
+              '✌ Leave quietly',
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,

@@ -1,4 +1,3 @@
-import 'package:club_house/util/history.dart';
 import 'package:flutter/material.dart';
 import 'package:club_house/pages/lobby/widgets/room_card.dart';
 import 'package:club_house/pages/lobby/widgets/schedule_card.dart';
