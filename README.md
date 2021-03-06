@@ -1,16 +1,30 @@
-# club_house
+# 👋 Flutter Clubhouse UI Clone [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-A new Flutter application.
+This project was made by referring to the Clubhouse app.
 
-## Getting Started
+## Preview
+<p align="center">
+ <img src="readme/preview.png" width='1024'/>
+</p>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Flutter Web
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Flutter has been upgraded to 2.0 so you can build a web in the stable version.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+~~~
+flutter run -d chrome
+~~~
+
+
+## Youtube
+[Flutter Clubhouse App UI Clone - SpeedCode](https://youtu.be/82yRZZ2ydmE)
+<p align="center">
+ <img src="readme/youtube.png" width='1024'/>
+</p>
+
+
+## Packages
+* country_code_picker : https://pub.dev/packages/country_code_picker
+
+* pull_to_refresh : https://pub.dev/packages/pull_to_refresh
