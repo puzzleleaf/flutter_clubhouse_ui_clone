@@ -2,6 +2,10 @@
 
 This project was made by referring to the Clubhouse app.
 
+<p align="left">
+ <img src="readme/main.gif" width='512'/>
+</p>
+
 ## Preview
 <p align="center">
  <img src="readme/preview.png" width='1024'/>
