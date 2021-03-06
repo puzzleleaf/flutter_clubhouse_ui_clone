@@ -16,7 +16,7 @@ class LobbyPage extends StatefulWidget {
 
 class _LobbyPageState extends State<LobbyPage> {
   RefreshController _refreshController =
-      RefreshController(initialRefresh: false);
+  RefreshController(initialRefresh: false);
 
   void _onRefresh() async {
     await Future.delayed(Duration(milliseconds: 1000));
@@ -44,10 +44,11 @@ class _LobbyPageState extends State<LobbyPage> {
               left: 20,
               right: 20,
             ),
-            itemBuilder: (context, index) {
+            itemBuilder: (lc, index) {
               if (index == 0) {
                 return buildScheduleCard();
               }
+
               return buildRoomCard(rooms[index - 1]);
             },
             itemCount: rooms.length + 1,
@@ -59,32 +60,12 @@ class _LobbyPageState extends State<LobbyPage> {
     );
   }
 
-  Widget buildGradientContainer() {
+  Widget buildScheduleCard() {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Style.LightBrown.withOpacity(0.2),
-            Style.LightBrown,
-          ],
-        ),
+      margin: const EdgeInsets.symmetric(
+        vertical: 10,
       ),
-      height: 50,
-    );
-  }
-
-  Widget buildStartRoomButton() {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 20),
-      child: RoundButton(
-        onPressed: () {
-          showBottomSheet();
-        },
-        color: Style.AccentGreen,
-        text: '+ Start a room',
-      ),
+      child: ScheduleCard(),
     );
   }
 
@@ -104,12 +85,30 @@ class _LobbyPageState extends State<LobbyPage> {
     );
   }
 
-  Widget buildScheduleCard() {
+  Widget buildGradientContainer() {
     return Container(
-      margin: const EdgeInsets.symmetric(
-        vertical: 10,
-      ),
-      child: ScheduleCard(),
+      height: 50,
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Style.LightBrown.withOpacity(0.2),
+              Style.LightBrown,
+            ],
+          )),
+    );
+  }
+
+  Widget buildStartRoomButton() {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20),
+      child: RoundButton(
+          onPressed: () {
+            showBottomSheet();
+          },
+          color: Style.AccentGreen,
+          text: '+ Start a room'),
     );
   }
 
@@ -117,7 +116,7 @@ class _LobbyPageState extends State<LobbyPage> {
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
-      builder: (context) {
+      builder: (rc) {
         return RoomPage(
           room: room,
         );
@@ -127,14 +126,12 @@ class _LobbyPageState extends State<LobbyPage> {
 
   showBottomSheet() {
     showModalBottomSheet(
-      isScrollControlled: true,
       context: context,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(15),
-          topRight: Radius.circular(15),
-        ),
-      ),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15),
+            topRight: Radius.circular(15),
+          )),
       builder: (context) {
         return Wrap(
           children: [

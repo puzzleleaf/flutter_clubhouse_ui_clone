@@ -3,6 +3,7 @@ import 'package:club_house/models/user.dart';
 import 'package:club_house/pages/home/profile_page.dart';
 import 'package:club_house/pages/room/widgets/room_profile.dart';
 import 'package:club_house/util/data.dart';
+import 'package:club_house/util/history.dart';
 import 'package:club_house/util/style.dart';
 import 'package:club_house/widgets/round_button.dart';
 import 'package:club_house/widgets/round_image.dart';
@@ -11,23 +12,22 @@ import 'package:flutter/material.dart';
 class RoomPage extends StatelessWidget {
   final Room room;
 
-  RoomPage({Key key, this.room}) : super(key: key);
+  const RoomPage({Key key, this.room}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Style.LightBrown,
       appBar: AppBar(
         toolbarHeight: 150,
         automaticallyImplyLeading: false,
         title: Row(
           children: [
             IconButton(
+              iconSize: 30,
+              icon: Icon(Icons.keyboard_arrow_down),
               onPressed: () {
                 Navigator.pop(context);
               },
-              iconSize: 30,
-              icon: Icon(Icons.keyboard_arrow_down),
             ),
             Text(
               'All rooms',
@@ -39,11 +39,12 @@ class RoomPage extends StatelessWidget {
             Spacer(),
             GestureDetector(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return ProfilePage(
+                History.pushPage(
+                  context,
+                  ProfilePage(
                     profile: myProfile,
-                  );
-                }));
+                  ),
+                );
               },
               child: RoundImage(
                 path: myProfile.profileImage,
@@ -70,16 +71,18 @@ class RoomPage extends StatelessWidget {
         child: Stack(
           children: [
             SingleChildScrollView(
-              padding: const EdgeInsets.only(bottom: 80, top: 20),
+              padding: const EdgeInsets.only(
+                bottom: 80,
+                top: 20,
+              ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   buildTitle(room.title),
                   SizedBox(
                     height: 30,
                   ),
-                  buildSpeakers(context, room.users.sublist(0, room.speakerCount)),
-                  buildOthers(context, room.users.sublist(room.speakerCount)),
+                  buildSpeakers(room.users.sublist(0, room.speakerCount)),
+                  buildOthers(room.users.sublist(room.speakerCount)),
                 ],
               ),
             ),
@@ -109,16 +112,16 @@ class RoomPage extends StatelessWidget {
         ),
         Container(
           child: IconButton(
+            onPressed: () {},
             iconSize: 30,
             icon: Icon(Icons.more_horiz),
-            onPressed: () {},
           ),
-        )
+        ),
       ],
     );
   }
 
-  Widget buildSpeakers(BuildContext context, List<User> users) {
+  Widget buildSpeakers(List<User> users) {
     return GridView.builder(
       shrinkWrap: true,
       physics: ScrollPhysics(),
@@ -138,12 +141,12 @@ class RoomPage extends StatelessWidget {
     );
   }
 
-  Widget buildOthers(BuildContext context, List<User> users) {
+  Widget buildOthers(List<User> users) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16),
           child: Text(
             'Others in the room',
             style: TextStyle(
@@ -183,11 +186,11 @@ class RoomPage extends StatelessWidget {
             },
             color: Style.LightGrey,
             child: Text(
-              '✌ Leave quietly',
+              '✌️ Leave quietly',
               style: TextStyle(
+                color: Style.AccentRed,
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
-                color: Style.AccentRed,
               ),
             ),
           ),

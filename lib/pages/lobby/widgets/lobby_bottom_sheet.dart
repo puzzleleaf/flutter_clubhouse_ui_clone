@@ -54,7 +54,7 @@ class _LobbyBottomSheetState extends State<LobbyBottomSheet> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              for (var i = 0; i < 3; i++)
+              for (var i = 0, len = 3; i < len; i++)
                 InkWell(
                   borderRadius: BorderRadius.circular(15),
                   onTap: () {
@@ -63,18 +63,20 @@ class _LobbyBottomSheetState extends State<LobbyBottomSheet> {
                     });
                   },
                   child: Ink(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: i == selectedButtonIndex
-                          ? Style.SelectedItemBorderGrey
-                          : Colors.transparent,
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(
-                          color: i == selectedButtonIndex
-                              ? Style.SelectedItemGrey
-                              : Colors.transparent),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 5,
                     ),
+                    decoration: BoxDecoration(
+                        color: i == selectedButtonIndex
+                            ? Style.SelectedItemGrey
+                            : Colors.transparent,
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(
+                          color: i == selectedButtonIndex
+                              ? Style.SelectedItemBorderGrey
+                              : Colors.transparent,
+                        )),
                     child: Column(
                       children: [
                         Container(
@@ -99,16 +101,16 @@ class _LobbyBottomSheetState extends State<LobbyBottomSheet> {
             ],
           ),
           Divider(
-            indent: 20,
-            endIndent: 20,
             thickness: 1,
             height: 60,
+            indent: 20,
+            endIndent: 20,
           ),
           Text(
             lobbyBottomSheets[selectedButtonIndex]['selectedMessage'],
             style: TextStyle(
-              fontWeight: FontWeight.bold,
               fontSize: 18,
+              fontWeight: FontWeight.bold,
             ),
           ),
           SizedBox(
@@ -118,7 +120,7 @@ class _LobbyBottomSheetState extends State<LobbyBottomSheet> {
             color: Style.AccentGreen,
             onPressed: widget.onButtonTap,
             text: '🎉 Let\'s go',
-          ),
+          )
         ],
       ),
     );

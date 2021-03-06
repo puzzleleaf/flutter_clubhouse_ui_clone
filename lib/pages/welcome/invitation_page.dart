@@ -17,19 +17,14 @@ class InvitationPage extends StatelessWidget {
           bottom: 60,
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              '🎉 Welcome to Clubhouse.\nYou\'re Puzzleleaf\'s friend!',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 25,
-              ),
-            ),
+            buildTitle(),
             SizedBox(
               height: 50,
             ),
-            buildContents(),
+            Expanded(
+              child: buildContents(),
+            ),
             buildBottom(context),
           ],
         ),
@@ -37,33 +32,39 @@ class InvitationPage extends StatelessWidget {
     );
   }
 
-  buildContents() {
-    return Expanded(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            RoundImage(
-              width: 150,
-              height: 150,
-              borderRadius: 40,
-              path: 'assets/images/puzzleleaf.png',
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              'Puzzleleaf',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
+  Widget buildTitle() {
+    return Text(
+      '🎉 Welcome to Clubhouse.\nYou\'re Puzzleleaf\'s friend!',
+      style: TextStyle(
+        fontSize: 25,
       ),
     );
   }
 
-  buildBottom(BuildContext context) {
+  Widget buildContents() {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          RoundImage(
+            path: 'assets/images/puzzleleaf.png',
+            width: 150,
+            height: 150,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            'Puzzleleaf',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget buildBottom(BuildContext context) {
     return Column(
       children: [
         Text(
@@ -76,16 +77,11 @@ class InvitationPage extends StatelessWidget {
         SizedBox(
           height: 30,
         ),
-        Container(
-          constraints: BoxConstraints(
-            minWidth: 230,
-          ),
-          child: RoundButton(
-            disabledColor: Style.AccentBlue.withOpacity(0.3),
-            color: Style.AccentBlue,
-            text: '🐋 Import from Whale',
-            onPressed: () {},
-          ),
+        RoundButton(
+          onPressed: () {},
+          minimumWidth: 230,
+          color: Style.AccentBlue,
+          text: '🐋 Import from Whale',
         ),
         SizedBox(
           height: 20,

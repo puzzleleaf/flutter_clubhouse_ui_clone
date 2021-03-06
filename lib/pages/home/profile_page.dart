@@ -1,5 +1,5 @@
 import 'package:club_house/models/user.dart';
-import 'package:club_house/util/style.dart';
+import 'package:club_house/util/data.dart';
 import 'package:club_house/widgets/round_image.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +14,8 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {},
             icon: Icon(Icons.settings_rounded),
+            onPressed: () {},
           ),
         ],
       ),
@@ -25,18 +25,18 @@ class ProfilePage extends StatelessWidget {
         ),
         child: Column(
           children: [
-            buildProfile(profile),
+            buildProfile(),
             SizedBox(
               height: 20,
             ),
-            buildInviter(),
+            builderInviter(),
           ],
         ),
       ),
     );
   }
 
-  Widget buildProfile(User profile) {
+  Widget buildProfile() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -62,8 +62,8 @@ class ProfilePage extends StatelessWidget {
         Text(
           profile.username,
           style: TextStyle(
-            fontWeight: FontWeight.bold,
             fontSize: 15,
+            fontWeight: FontWeight.bold,
           ),
         ),
         SizedBox(
@@ -81,9 +81,7 @@ class ProfilePage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  TextSpan(
-                    text: ' followers',
-                  ),
+                  TextSpan(text: ' followers'),
                 ],
                 style: TextStyle(
                   color: Colors.black,
@@ -103,9 +101,7 @@ class ProfilePage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  TextSpan(
-                    text: ' following',
-                  ),
+                  TextSpan(text: ' following'),
                 ],
                 style: TextStyle(
                   color: Colors.black,
@@ -117,15 +113,17 @@ class ProfilePage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: Text(
-            '🐕🦮 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Semper viverra nam libero justo. 🐕‍🦺',
-            style: TextStyle(fontSize: 15),
+            dummyText,
+            style: TextStyle(
+              fontSize: 15,
+            ),
           ),
         ),
       ],
     );
   }
 
-  Widget buildInviter() {
+  Widget builderInviter() {
     return Row(
       children: [
         RoundImage(
@@ -138,9 +136,7 @@ class ProfilePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Joined Mar 28, 2021'),
-            SizedBox(
-              height: 3,
-            ),
+            SizedBox(height: 3,),
             RichText(
               text: TextSpan(
                 children: <TextSpan>[
@@ -160,7 +156,7 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
           ],
-        )
+        ),
       ],
     );
   }

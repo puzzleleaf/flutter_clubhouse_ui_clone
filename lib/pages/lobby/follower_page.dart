@@ -17,7 +17,6 @@ class FollowerPage extends StatelessWidget {
         top: 10,
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           buildAvailableChatTitle(),
           buildAvailableChatList(context),
@@ -33,9 +32,9 @@ class FollowerPage extends StatelessWidget {
         Text(
           'AVAILABLE TO CHAT',
           style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
             color: Style.DarkBrown,
+            fontWeight: FontWeight.bold,
+            fontSize: 15,
           ),
         ),
         Expanded(
@@ -52,10 +51,9 @@ class FollowerPage extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       physics: ScrollPhysics(),
-      itemCount: users.length,
       itemBuilder: (lc, index) {
         return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
+          padding: const EdgeInsets.all(8.0),
           child: FollowerItem(
             user: users[index],
             onProfileTap: () {
@@ -68,8 +66,8 @@ class FollowerPage extends StatelessWidget {
             },
             onRoomButtonTap: () {
               showModalBottomSheet(
-                isScrollControlled: true,
                 context: context,
+                isScrollControlled: true,
                 builder: (context) {
                   return RoomPage(
                     room: Room(
@@ -84,6 +82,7 @@ class FollowerPage extends StatelessWidget {
           ),
         );
       },
+      itemCount: users.length,
     );
   }
 }

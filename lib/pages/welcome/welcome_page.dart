@@ -10,7 +10,6 @@ class WelcomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
-        alignment: Alignment.center,
         padding: const EdgeInsets.only(
           left: 50,
           right: 50,
@@ -33,17 +32,16 @@ class WelcomePage extends StatelessWidget {
     );
   }
 
-  buildTitle() {
+  Widget buildTitle() {
     return Text(
       '🎉 Welcome!',
       style: TextStyle(
-        color: Colors.black,
         fontSize: 25,
       ),
     );
   }
 
-  buildContents() {
+  Widget buildContents() {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +49,6 @@ class WelcomePage extends StatelessWidget {
           Text(
             'We\'re working hard to get Clubhouse ready for launch! While we wrap up the finishing touches, we\'re adding people gradually to make sure nothing breaks. :)',
             style: TextStyle(
-              color: Colors.black,
               height: 1.8,
               fontSize: 15,
             ),
@@ -62,7 +59,6 @@ class WelcomePage extends StatelessWidget {
           Text(
             'If you don\'t yet have an invite, you can reserve your username now and we\'ll get you on very soon. We are so grateful you\'re here and can\'t wait to have you join! 🙏',
             style: TextStyle(
-              color: Colors.black,
               height: 1.8,
               fontSize: 15,
             ),
@@ -73,7 +69,6 @@ class WelcomePage extends StatelessWidget {
           Text(
             '🏠 Paul, Rohan & the Clubhouse team',
             style: TextStyle(
-              color: Colors.black,
               fontSize: 15,
             ),
           ),
@@ -82,24 +77,21 @@ class WelcomePage extends StatelessWidget {
     );
   }
 
-  buildBottom(BuildContext context) {
+  Widget buildBottom(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         RoundButton(
           color: Style.AccentBlue,
           onPressed: () {
-            History.pushPage(
-              context,
-              PhoneNumberPage(),
-            );
+            History.pushPage(context, PhoneNumberPage());
           },
           child: Container(
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Get your username',
+                  'Got your username',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -126,7 +118,7 @@ class WelcomePage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 5.0,
+              width: 5,
             ),
             Text(
               'Sign in',

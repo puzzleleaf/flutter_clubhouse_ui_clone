@@ -15,17 +15,16 @@ class RoomCard extends StatelessWidget {
         vertical: 20,
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            offset: Offset(0, 1), // changes position of shadow
-          ),
-        ],
-      ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              offset: Offset(0, 1),
+            )
+          ]),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             room.title,
@@ -38,7 +37,6 @@ class RoomCard extends StatelessWidget {
             height: 15,
           ),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildProfileImages(),
               SizedBox(
@@ -53,9 +51,9 @@ class RoomCard extends StatelessWidget {
                   ),
                   buildRoomInfo(),
                 ],
-              )
+              ),
             ],
-          ),
+          )
         ],
       ),
     );
@@ -65,7 +63,7 @@ class RoomCard extends StatelessWidget {
     return Stack(
       children: [
         RoundImage(
-          margin: EdgeInsets.only(top: 15, left: 25),
+          margin: const EdgeInsets.only(top: 15, left: 25),
           path: room.users[1].profileImage,
         ),
         RoundImage(
@@ -83,7 +81,6 @@ class RoomCard extends StatelessWidget {
       children: [
         for (var i = 0; i < len; i++)
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 3),
             child: Row(
               children: [
                 Text(
@@ -112,7 +109,7 @@ class RoomCard extends StatelessWidget {
     return Row(
       children: [
         Text(
-          '${room.users.length} ',
+          '${room.users.length}',
           style: TextStyle(
             color: Colors.grey,
           ),
@@ -130,7 +127,7 @@ class RoomCard extends StatelessWidget {
           ),
         ),
         Text(
-          '${room.speakerCount} ',
+          '${room.speakerCount}',
           style: TextStyle(
             color: Colors.grey,
           ),
@@ -139,7 +136,7 @@ class RoomCard extends StatelessWidget {
           Icons.chat_bubble_rounded,
           color: Colors.grey,
           size: 14,
-        )
+        ),
       ],
     );
   }

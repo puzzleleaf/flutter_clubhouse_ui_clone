@@ -22,10 +22,7 @@ class _FullNamePageState extends State<FullNamePage> {
       appBar: AppBar(),
       body: Container(
         alignment: Alignment.center,
-        padding: const EdgeInsets.only(
-          top: 30,
-          bottom: 60,
-        ),
+        padding: const EdgeInsets.only(top: 30, bottom: 60),
         child: Column(
           children: [
             buildTitle(),
@@ -33,17 +30,10 @@ class _FullNamePageState extends State<FullNamePage> {
               height: 50,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: buildForm(),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              'People use real names on Clubhouse :) Thnx!',
-              style: TextStyle(
-                color: Colors.grey,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
               ),
+              child: buildForm(),
             ),
             Spacer(),
             buildBottom(),
@@ -57,7 +47,6 @@ class _FullNamePageState extends State<FullNamePage> {
     return Text(
       'What\'s your full name?',
       style: TextStyle(
-        color: Colors.black,
         fontSize: 25,
       ),
     );
@@ -67,7 +56,6 @@ class _FullNamePageState extends State<FullNamePage> {
     return Row(
       children: [
         Expanded(
-          flex: 1,
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
@@ -92,13 +80,14 @@ class _FullNamePageState extends State<FullNamePage> {
                       onNextButtonClick = null;
                     });
                   }
+
                   return null;
                 },
                 controller: _firstNameController,
                 autocorrect: false,
                 autofocus: false,
                 decoration: InputDecoration(
-                  hintText: "First Name",
+                  hintText: 'First Name',
                   hintStyle: TextStyle(
                     fontSize: 20,
                   ),
@@ -110,7 +99,7 @@ class _FullNamePageState extends State<FullNamePage> {
                 ),
                 keyboardType: TextInputType.text,
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 20,
                   color: Colors.black,
                   fontWeight: FontWeight.w400,
                 ),
@@ -122,7 +111,6 @@ class _FullNamePageState extends State<FullNamePage> {
           width: 10,
         ),
         Expanded(
-          flex: 1,
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
@@ -131,7 +119,6 @@ class _FullNamePageState extends State<FullNamePage> {
             child: Form(
               key: _lastNameFormKey,
               child: TextFormField(
-                controller: _lastNameController,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   _lastNameFormKey.currentState.validate();
@@ -148,12 +135,14 @@ class _FullNamePageState extends State<FullNamePage> {
                       onNextButtonClick = null;
                     });
                   }
+
                   return null;
                 },
+                controller: _lastNameController,
                 autocorrect: false,
                 autofocus: false,
                 decoration: InputDecoration(
-                  hintText: "Last Name",
+                  hintText: 'Last Name',
                   hintStyle: TextStyle(
                     fontSize: 20,
                   ),
@@ -165,24 +154,24 @@ class _FullNamePageState extends State<FullNamePage> {
                 ),
                 keyboardType: TextInputType.text,
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 20,
                   color: Colors.black,
                   fontWeight: FontWeight.w400,
                 ),
               ),
             ),
           ),
-        ),
+        )
       ],
     );
   }
 
   Widget buildBottom() {
     return RoundButton(
-      disabledColor: Style.AccentBlue.withOpacity(0.3),
       color: Style.AccentBlue,
-      onPressed: onNextButtonClick,
       minimumWidth: 230,
+      disabledColor: Style.AccentBlue.withOpacity(0.3),
+      onPressed: onNextButtonClick,
       child: Container(
         child: Row(
           mainAxisSize: MainAxisSize.min,

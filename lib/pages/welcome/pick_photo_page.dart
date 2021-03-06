@@ -48,7 +48,6 @@ class PickPhotoPage extends StatelessWidget {
         },
         child: Text(
           'Skip',
-          textAlign: TextAlign.end,
           style: TextStyle(
             color: Style.DarkBrown,
             fontWeight: FontWeight.bold,
@@ -62,7 +61,6 @@ class PickPhotoPage extends StatelessWidget {
     return Text(
       'Great! Now add a photo?',
       style: TextStyle(
-        color: Colors.black,
         fontSize: 25,
       ),
     );
@@ -86,10 +84,10 @@ class PickPhotoPage extends StatelessWidget {
 
   Widget buildBottom() {
     return RoundButton(
-      onPressed: () {},
-      disabledColor: Style.AccentBlue.withOpacity(0.3),
       color: Style.AccentBlue,
       minimumWidth: 230,
+      disabledColor: Style.AccentBlue.withOpacity(0.3),
+      onPressed: () {},
       child: Container(
         child: Row(
           mainAxisSize: MainAxisSize.min,

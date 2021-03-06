@@ -44,7 +44,6 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
     return Text(
       'Enter your phone #',
       style: TextStyle(
-        color: Colors.black,
         fontSize: 25,
       ),
     );
@@ -63,9 +62,7 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
             initialSelection: 'KR',
             showCountryOnly: false,
             alignLeft: false,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 8.0,
-            ),
+            padding: const EdgeInsets.all(8),
             textStyle: TextStyle(
               fontSize: 20,
             ),
@@ -93,7 +90,7 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
                 autocorrect: false,
                 autofocus: false,
                 decoration: InputDecoration(
-                  hintText: "Phone Number",
+                  hintText: 'Phone Number',
                   hintStyle: TextStyle(
                     fontSize: 20,
                   ),
@@ -103,9 +100,10 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
                   errorBorder: InputBorder.none,
                   disabledBorder: InputBorder.none,
                 ),
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.numberWithOptions(
+                    signed: true, decimal: true),
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 20,
                   color: Colors.black,
                   fontWeight: FontWeight.w400,
                 ),
@@ -121,7 +119,7 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
     return Column(
       children: [
         Text(
-          'By entering your number, you\'re agreeing to our\nTerms of Services and Privacy Policy. Thanks!',
+          'By entering your number, you\'re agreeing to out\nTerms or Services and Privacy Policy. Thanks!',
           style: TextStyle(
             color: Colors.grey,
           ),
@@ -130,10 +128,10 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
           height: 30,
         ),
         RoundButton(
-          onPressed: onSignUpButtonClick,
-          disabledColor: Style.AccentBlue.withOpacity(0.3),
           color: Style.AccentBlue,
           minimumWidth: 230,
+          disabledColor: Style.AccentBlue.withOpacity(0.3),
+          onPressed: onSignUpButtonClick,
           child: Container(
             child: Row(
               mainAxisSize: MainAxisSize.min,
