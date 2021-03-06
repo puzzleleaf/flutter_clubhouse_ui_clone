@@ -6,8 +6,7 @@ class HomeAppBar extends StatelessWidget {
   final User profile;
   final Function onProfileTab;
 
-  const HomeAppBar({Key key, this.profile, this.onProfileTab})
-      : super(key: key);
+  const HomeAppBar({Key key, this.profile, this.onProfileTab}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,69 +14,49 @@ class HomeAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
-          alignment: Alignment.topLeft,
           child: IconButton(
-            iconSize: 30,
-            splashRadius: 20,
-            icon: Icon(
-              Icons.search,
-              color: Colors.black,
-            ),
             onPressed: () {},
+            iconSize: 30,
+            icon: Icon(Icons.search),
           ),
         ),
         Spacer(),
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton(
-                iconSize: 30,
-                splashRadius: 20,
-                icon: Icon(
-                  Icons.mail,
-                  color: Colors.black,
-                ),
-                onPressed: () {},
+        Row(
+          children: [
+            IconButton(
+              onPressed: () {},
+              iconSize: 30,
+              icon: Icon(Icons.mail),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            IconButton(
+              onPressed: () {},
+              iconSize: 30,
+              icon: Icon(Icons.calendar_today),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            IconButton(
+              onPressed: () {},
+              iconSize: 30,
+              icon: Icon(Icons.notifications_active_outlined),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            GestureDetector(
+              onTap: onProfileTab,
+              child: RoundImage(
+                path: profile.profileImage,
+                width: 40,
+                height: 40,
               ),
-              SizedBox(
-                width: 10,
-              ),
-              IconButton(
-                iconSize: 30,
-                splashRadius: 20,
-                icon: Icon(
-                  Icons.calendar_today,
-                  color: Colors.black,
-                ),
-                onPressed: () {},
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              IconButton(
-                iconSize: 30,
-                splashRadius: 20,
-                icon: Icon(
-                  Icons.notifications_none_outlined,
-                  color: Colors.black,
-                ),
-                onPressed: () {},
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              GestureDetector(
-                onTap: onProfileTab,
-                child: RoundImage(
-                  path: profile.profileImage,
-                  width: 40,
-                  height: 40,
-                ),
-              ),
-            ],
-          ),
-        )
+            )
+          ],
+        ),
       ],
     );
   }

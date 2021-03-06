@@ -42,25 +42,24 @@ class FollowerItem extends StatelessWidget {
                 style: TextStyle(
                   color: Style.DarkBrown,
                 ),
-              )
+              ),
             ],
           ),
         ),
         Container(
           height: 25,
           child: RoundButton(
-            color: Style.LightGreen,
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 8,
             ),
             onPressed: onRoomButtonTap,
+            color: Style.LightGreen,
             child: Row(
               children: [
                 Text(
                   '+ Room',
                   style: TextStyle(
                     color: Style.AccentGreen,
-                    decoration: TextDecoration.underline,
                   ),
                 ),
                 Icon(
@@ -71,7 +70,7 @@ class FollowerItem extends StatelessWidget {
               ],
             ),
           ),
-        ),
+        )
       ],
     );
   }

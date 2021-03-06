@@ -11,7 +11,7 @@ class UsernamePage extends StatefulWidget {
 
 class _UsernamePageState extends State<UsernamePage> {
   final _userNameController = TextEditingController();
-  final _userNameFormKey = GlobalKey<FormState>();
+  final _userNameformKey = GlobalKey<FormState>();
   Function onNextButtonClick;
 
   @override
@@ -43,7 +43,6 @@ class _UsernamePageState extends State<UsernamePage> {
     return Text(
       'Pick a username',
       style: TextStyle(
-        color: Colors.black,
         fontSize: 25,
       ),
     );
@@ -51,28 +50,26 @@ class _UsernamePageState extends State<UsernamePage> {
 
   Widget buildForm() {
     return Container(
-      constraints: BoxConstraints(
-        maxWidth: 350,
-      ),
+      width: 330,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
         color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Form(
-        key: _userNameFormKey,
+        key: _userNameformKey,
         child: TextFormField(
           textAlign: TextAlign.center,
           onChanged: (value) {
-            _userNameFormKey.currentState.validate();
+            _userNameformKey.currentState.validate();
           },
           validator: (value) {
-            if (value.isNotEmpty) {
+            if (value.isEmpty) {
               setState(() {
-                onNextButtonClick = next;
+                onNextButtonClick = null;
               });
             } else {
               setState(() {
-                onNextButtonClick = null;
+                onNextButtonClick = next;
               });
             }
             return null;
@@ -81,7 +78,7 @@ class _UsernamePageState extends State<UsernamePage> {
           autocorrect: false,
           autofocus: false,
           decoration: InputDecoration(
-            hintText: "@username",
+            hintText: '@username',
             hintStyle: TextStyle(
               fontSize: 20,
             ),
@@ -93,7 +90,7 @@ class _UsernamePageState extends State<UsernamePage> {
           ),
           keyboardType: TextInputType.text,
           style: TextStyle(
-            fontSize: 20.0,
+            fontSize: 20,
             color: Colors.black,
             fontWeight: FontWeight.w400,
           ),
@@ -104,10 +101,10 @@ class _UsernamePageState extends State<UsernamePage> {
 
   Widget buildBottom() {
     return RoundButton(
-      disabledColor: Style.AccentBlue.withOpacity(0.3),
       color: Style.AccentBlue,
-      onPressed: onNextButtonClick,
       minimumWidth: 230,
+      disabledColor: Style.AccentBlue.withOpacity(0.3),
+      onPressed: onNextButtonClick,
       child: Container(
         child: Row(
           mainAxisSize: MainAxisSize.min,

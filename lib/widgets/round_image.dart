@@ -13,8 +13,8 @@ class RoundImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: width,
-      width: height,
+      height: height,
+      width: width,
       margin: margin,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),

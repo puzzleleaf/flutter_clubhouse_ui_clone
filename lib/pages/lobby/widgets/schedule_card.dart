@@ -15,12 +15,13 @@ class ScheduleCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           for (var i = 0, len = 3; i < len; i++)
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              padding: const EdgeInsets.all(8.0),
               child: buildScheduleItem('0${7 + i}:00 PM', dummyText),
-            ),
+            )
         ],
       ),
     );
@@ -33,7 +34,6 @@ class ScheduleCard extends StatelessWidget {
       children: [
         Container(
           width: 75,
-          alignment: Alignment.centerRight,
           child: Text(
             time,
             style: TextStyle(
@@ -46,14 +46,13 @@ class ScheduleCard extends StatelessWidget {
         ),
         Flexible(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
                   Text(
                     'COMMUNITY CLUB',
                     style: TextStyle(
-                      color: Color(0xff807970),
+                      color: Style.AccentGrey,
                       fontSize: 12,
                     ),
                   ),
@@ -64,7 +63,7 @@ class ScheduleCard extends StatelessWidget {
                     Icons.home,
                     color: Style.AccentGreen,
                     size: 15,
-                  ),
+                  )
                 ],
               ),
               Text(
