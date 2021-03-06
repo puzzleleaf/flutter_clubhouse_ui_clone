@@ -1,6 +1,6 @@
 # 👋 Flutter Clubhouse UI Clone [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-This is Clone UI Project, a clubhouse app with Flutter.
+This project was made by referring to the Clubhouse app.
 
 ## Preview
 <p align="center">
@@ -18,7 +18,7 @@ flutter run -d chrome
 
 
 ## Youtube
-[Flutter Clubhouse App UI Clone - SpeedCode]()
+[Flutter Clubhouse App UI Clone - SpeedCode](https://youtu.be/82yRZZ2ydmE)
 <p align="center">
  <img src="readme/youtube.png" width='1024'/>
 </p>
